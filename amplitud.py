@@ -71,7 +71,19 @@ class Laberinto:
                 else:
                     self.canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
 
-   
+        print("holaaaa")
+
+
+
+
+
+
+
+
+
+
+
+        
         raton_x, raton_y = self.raton_pos
         raton_cx = raton_y * self.cell_width + (self.cell_width - self.raton_image.width()) // 2
         raton_cy = raton_x * self.cell_height + (self.cell_height - self.raton_image.height()) // 2
@@ -91,48 +103,7 @@ class Laberinto:
 
     def iniciar_busqueda(self):
         self.boton_iniciar.config(state=tk.DISABLED)  # Desactivar el botón para evitar múltiples búsquedas
-        self.realizar_bfs()  # Comenzar la búsqueda por amplitud la unica que tengo daa
-
-    def realizar_bfs(self):
-        cola = deque([NodoArbol(self.raton_pos)])
-        visitados = set([self.raton_pos])
-        expansiones = 0
-
-        while cola:
-            nodo_actual = cola.popleft()
-            posicion_actual = nodo_actual.posicion
-
-            if posicion_actual == self.queso_pos:
-                print("Queso encontrado!")
-                self.mostrar_camino(nodo_actual)
-                return
-
-
-            for movimiento in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-                nueva_posicion = (posicion_actual[0] + movimiento[0], posicion_actual[1] + movimiento[1])
-
-
-                if (0 <= nueva_posicion[0] < self.rows and
-                    0 <= nueva_posicion[1] < self.cols and
-                    self.maze[nueva_posicion[0]][nueva_posicion[1]] == 0 and
-                    nueva_posicion not in visitados):
-                    
-                    nuevo_nodo = NodoArbol(nueva_posicion, nodo_actual)
-                    nodo_actual.hijos.append(nuevo_nodo)
-                    cola.append(nuevo_nodo)
-                    visitados.add(nueva_posicion)
-
-                    expansiones += 1
-
-                    self.dibujar_nodo_lab(nueva_posicion)
-                    self.dibujar_arbol(nodo_actual, nuevo_nodo)
-                    
-
-                    self.root.update()
-                    time.sleep(0.5)  # ajustar el tiempo e expansion del arbol
-
-        print("No se encontró el queso.")
-
+    
     def dibujar_nodo_lab(self, posicion):
         x1 = posicion[1] * self.cell_width
         y1 = posicion[0] * self.cell_height
@@ -151,6 +122,29 @@ class Laberinto:
         y_hijo = y_padre + 50
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         self.canvas_arbol.create_line(x_padre, y_padre, x_hijo, y_hijo, fill="black")
         self.canvas_arbol.create_oval(x_hijo - 5, y_hijo - 5, x_hijo + 5, y_hijo + 5, fill="blue")
 
@@ -162,6 +156,43 @@ class Laberinto:
             self.dibujar_nodo_lab(nodo.posicion)
             nodo = nodo.padre
         self.root.update()
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Laberinto - Búsqueda por Amplitud")
+    app = Laberinto(root, expansiones_por_actualizacion=2)
+    root.mainloop()
+
+
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Laberinto - Búsqueda por Amplitud")
+    app = Laberinto(root, expansiones_por_actualizacion=2)
+    root.mainloop()
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Laberinto - Búsqueda por Amplitud")
+    app = Laberinto(root, expansiones_por_actualizacion=2)
+    root.mainloop()
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

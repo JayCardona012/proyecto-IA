@@ -14,6 +14,28 @@ class NodoArbol:
         self.costo = costo  # Para búsquedas que usan costo
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Laberinto:
     def __init__(self, root, rows=4, cols=4, expansiones_por_actualizacion=2):
         self.root = root
@@ -59,6 +81,26 @@ class Laberinto:
         adjusted_height = int(self.cell_height * self.image_scale_factor)
         image = Image.open(path).resize((adjusted_width, adjusted_height), Image.Resampling.LANCZOS)
         return ImageTk.PhotoImage(image)
+
+
+
+    def iniciar_laberinto(self):
+        # Colocar las paredes (bloques grises)
+        for bloque in self.bloques_grises:
+            row, col = bloque
+            self.maze[row][col] = 1  # 1 representa un bloque gris
+
+
+    def iniciar_laberinto(self):
+        # Colocar las paredes (bloques grises)
+        for bloque in self.bloques_grises:
+            row, col = bloque
+            self.maze[row][col] = 1  # 1 representa un bloque gris
+
+
+
+
+
 
     def iniciar_laberinto(self):
         # Colocar las paredes (bloques grises)
